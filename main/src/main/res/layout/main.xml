@@ -1,15 +1,39 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="#e24301">
 
-    <com.facebook.widget.LoginButton
-        android:id="@+id/authButton"
+    <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:layout_marginTop="50sp"
+        android:background="@drawable/ic_ns_dot_white"
+        android:focusable="false"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Reminder"
+        android:id="@+id/textView"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/imageButton"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        />
+        android:layout_marginTop="10sp" />
+
+    <view
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        class="com.facebook.widget.LoginButton"
+        android:id="@+id/authButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="75dp" />
 
 </LinearLayout>
