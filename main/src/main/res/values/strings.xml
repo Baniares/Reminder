@@ -20,5 +20,7 @@
     <string name="bioHint">i\'m...</string>
     <string name="emailHint">mail@mail.com</string>
     <string name="title_activity_facebook_test">facebookTest</string>
+    <string name="title_activity_add_reminder">Add Reminder</string>
+    <string name="title_activity_reminders">Reminders</string>
 
 </resources>

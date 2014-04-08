@@ -5,6 +5,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#e24301">
 
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar"
+        android:indeterminate="true"
+        android:indeterminateBehavior="cycle"
+        android:visibility="visible"
+        android:layout_marginTop="-7sp" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -16,7 +26,8 @@
             android:layout_height="wrap_content"
             class="com.facebook.widget.ProfilePictureView"
             android:id="@+id/profilepic"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15sp" />
     </LinearLayout>
 
     <ScrollView
@@ -54,7 +65,8 @@
                     android:id="@+id/nameEditText"
                     android:textColor="#ffffff"
                     android:layout_weight="1"
-                    android:hint="@string/nameEditText" />
+                    android:hint="@string/nameEditText"
+                    android:textColorHint="#a3a2a2" />
 
             </LinearLayout>
 
@@ -80,7 +92,8 @@
                     android:id="@+id/mailEditText"
                     android:textColor="#ffffff"
                     android:layout_weight="1"
-                    android:hint="mail@mail.com" />
+                    android:hint="mail@mail.com"
+                    android:layout_marginLeft="2sp" />
 
             </LinearLayout>
 
@@ -107,7 +120,8 @@
                     android:textColor="#ffffff"
                     android:layout_weight="1"
                     android:autoText="false"
-                    android:hint="@string/bioHint" />
+                    android:hint="@string/bioHint"
+                    android:layout_marginLeft="17sp" />
 
             </LinearLayout>
 
@@ -170,17 +184,18 @@
                     android:text="@string/repeat"
                     android:id="@+id/Repeat"
                     android:textColor="#ffffff"
-                    android:labelFor="@+id/repeatEditText" />
+                    android:labelFor="@+id/rePasswordEditText" />
 
                 <EditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword"
                     android:ems="10"
-                    android:id="@+id/repeatEditText"
+                    android:id="@+id/rePasswordEditText"
                     android:textColor="#ffffff"
                     android:layout_weight="1"
-                    android:hint="******" />
+                    android:hint="******"
+                    android:layout_marginLeft="17sp" />
 
             </LinearLayout>
 
