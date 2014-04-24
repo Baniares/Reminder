@@ -1,12 +1,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.nearsoft.reminder.main.Reminders" >
+    tools:context="com.nearsoft.reminder.main.ReminderFragmentActivity" >
 
-    <item android:id="@+id/addReminderActionBar"
-        android:icon="@drawable/ic_action_new"
+    <item android:id="@+id/deleteReminderActionBar"
+        android:icon="@drawable/ic_action_discard"
         android:showAsAction="always"/>
-    <item android:id="@+id/editProfileActionBar"
+    <item android:id="@+id/editReminderActionBar"
         android:icon="@drawable/ic_action_edit"
         android:showAsAction="always"/>
 </menu>

@@ -2,55 +2,44 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/linearLayout2">
+    android:id="@+id/linearLayout2"
+    android:background="#E24301">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/scrollView" >
+        android:id="@+id/scrollView">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:focusable="false">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Tittle:"
-                    android:id="@+id/textView" />
-
                 <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/editText" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                    android:id="@+id/titleReminder"
+                    android:hint="Title"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#A3A2A2"
+                    android:layout_marginTop="15sp"
+                    android:editable="true" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Description:"
-                    android:id="@+id/textView2" />
-
-                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textMultiLine"
-                    android:ems="10"
-                    android:id="@+id/editText2" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Title"
+                    android:id="@+id/reminderTitleTextView"
+                    android:textColor="#ffffff"
+                    android:visibility="gone"
+                    style="@android:style/Widget.DeviceDefault.EditText" />
             </LinearLayout>
 
             <LinearLayout
@@ -58,14 +47,44 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
 
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:id="@+id/descriptionReminder"
+                    android:hint="Description"
+                    android:textColor="#ffffff"
+                    android:textColorHint="#a3a2a2"
+                    android:layout_marginTop="15sp"
+                    android:editable="true" />
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Start Date"
-                    android:id="@+id/textView3"
-                    android:layout_gravity="center_horizontal" />
+                    android:text="Description"
+                    android:id="@+id/reminderDescriptionTextView"
+                    android:textColor="#ffffff"
+                    android:visibility="gone"
+                    style="@android:style/Widget.DeviceDefault.EditText" />
+            </LinearLayout>
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Start date"
+                    android:id="@+id/reminderStartDateButton"
+                    style="@android:style/Widget.DeviceDefault.EditText"
+                    android:textColor="#A3A2A2"
+                    android:clickable="true"
+                    android:focusableInTouchMode="true"
+                    android:focusable="true" />
             </LinearLayout>
 
             <LinearLayout
@@ -74,27 +93,32 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/linearLayout" >
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <Button
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="End Date"
-                    android:id="@+id/textView4"
-                    android:layout_gravity="center_horizontal" />
-
+                    android:text="End date"
+                    android:id="@+id/reminderEndDateButton"
+                    style="@android:style/Widget.DeviceDefault.EditText"
+                    android:textColor="#A3A2A2"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false" />
             </LinearLayout>
 
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent" >
+                android:layout_height="fill_parent"
+                android:id="@+id/linearLayout4" >
 
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Save"
-                    android:id="@+id/button"
-                    android:layout_gravity="center_horizontal" />
+                    android:id="@+id/saveReminderButton"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="30sp" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

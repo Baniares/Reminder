@@ -5,22 +5,17 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="app_id">1398547997084143</string>
-    <string name="logout">Logout</string>
-    <string name="login">Login</string>
-    <string name="repeat">Repeat:</string>
-    <string name="name">Name:</string>
     <string name="nameEditText">Name</string>
-    <string name="mailView">Email:</string>
-    <string name="bioTextView">Bio:</string>
     <string name="offlineDivider">offline password</string>
-    <string name="passwordTextView">Password:</string>
     <string name="submit">Submit</string>
     <string name="mailHint">mail@mail.com</string>
-    <string name="passwordHint">******</string>
-    <string name="bioHint">i\'m...</string>
+    <string name="passwordHint">Password</string>
+    <string name="bioHint">Biography</string>
     <string name="emailHint">mail@mail.com</string>
     <string name="title_activity_facebook_test">facebookTest</string>
     <string name="title_activity_add_reminder">Add Reminder</string>
     <string name="title_activity_reminders">Reminders</string>
+    <string name="title_activity_new_reminder_fragment">Reminder</string>
+    <string name="title_activity_reminder_view">Reminder</string>
 
 </resources>

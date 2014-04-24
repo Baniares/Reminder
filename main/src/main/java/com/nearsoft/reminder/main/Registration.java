@@ -2,11 +2,13 @@ package com.nearsoft.reminder.main;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.Request;
@@ -16,8 +18,8 @@ import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.ProfilePictureView;
-import com.nearsoft.reminder.main.objects.DBHelper;
-import com.nearsoft.reminder.main.objects.User;
+import com.nearsoft.reminder.main.helpers.DBHelper;
+import com.nearsoft.reminder.main.models.User;
 
 /**
  * Created by Baniares on 3/28/14.
@@ -32,9 +34,11 @@ public class Registration extends Activity {
     private EditText userBio;
     private EditText password;
     private EditText repassword;
+    private TextView name;
+    private TextView email;
+    private TextView bio;
     private ProgressBar loading;
     private User profile;
-    private int idUser;
     private Session.StatusCallback callback = new Session.StatusCallback() {
         @Override
         public void call(Session session, SessionState state, Exception exception) {
@@ -54,7 +58,13 @@ public class Registration extends Activity {
         repassword=(EditText)findViewById(R.id.rePasswordEditText);
         userBio=(EditText)findViewById(R.id.bioEditText);
         submit = (Button) findViewById(R.id.submit);
+        name = (TextView) findViewById(R.id.profileNameTextView);
+        email = (TextView) findViewById(R.id.profileEmailTextView);
+        bio = (TextView) findViewById(R.id.profileBioTextView);
         loading = (ProgressBar) findViewById(R.id.progressBar);
+        name.setVisibility(View.GONE);
+        bio.setVisibility(View.GONE);
+        email.setVisibility(View.GONE);
         Session session = Session.getActiveSession();
         profile = new User();
         submit.setOnClickListener(new View.OnClickListener(){
@@ -133,15 +143,29 @@ public class Registration extends Activity {
             profile.setPassword(password.getText().toString());
             DBHelper db = new DBHelper(this);
             db.addUser(profile);
-            profile=db.getUserFromFacebookId(profile.getIdFacebook());
             db.close();
+            SharedPreferences.Editor setPrefs = getSharedPreferences("user",0).edit();
+            setPrefs.putString("name",profile.getName());
+            setPrefs.putString("email",profile.getEmail());
+            setPrefs.putString("idFacebook",profile.getIdFacebook());
+            setPrefs.putString("password",profile.getPassword());
+            setPrefs.putString("bio",profile.getBio());
+            setPrefs.putInt("id",profile.getId());
+            setPrefs.commit();
             finish();
-            Intent i = new Intent(this,addReminder.class);//need change
+            Intent i = new Intent(this,Reminders.class);
             i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            i.putExtra("idUser",profile.getId());
             startActivity(i);
         }else{
             Toast.makeText(this,"Invalid password",Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this,Login.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(i);
     }
 }

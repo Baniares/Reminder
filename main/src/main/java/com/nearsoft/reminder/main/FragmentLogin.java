@@ -1,6 +1,7 @@
 package com.nearsoft.reminder.main;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +16,8 @@ import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.LoginButton;
-import com.nearsoft.reminder.main.objects.DBHelper;
-import com.nearsoft.reminder.main.objects.User;
+import com.nearsoft.reminder.main.helpers.DBHelper;
+import com.nearsoft.reminder.main.models.User;
 
 import java.util.Arrays;
 
@@ -30,12 +31,12 @@ public class FragmentLogin extends Fragment {
     };
     private UiLifecycleHelper uiHelper;
     private DBHelper db;
-    String idFacebook="lol";
+    private String idFacebook="lol";
+    private SharedPreferences prefs;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.main, container, false);
-
         LoginButton authButton = (LoginButton) view.findViewById(R.id.authButton);
         authButton.setReadPermissions(Arrays.asList("basic_info","email"));
         authButton.setFragment(this);
@@ -48,6 +49,13 @@ public class FragmentLogin extends Fragment {
         uiHelper = new UiLifecycleHelper(getActivity(), callback);
         uiHelper.onCreate(savedInstanceState);
         db = new DBHelper(getActivity());
+        prefs = getActivity().getSharedPreferences("user",0);
+        if(prefs.getInt("id",-6)!=-200&&prefs.getInt("id",-6)!=-6){
+            Intent intent = new Intent(getActivity(), Reminders.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            getActivity().finish();
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -96,11 +104,20 @@ public class FragmentLogin extends Fragment {
                         Intent intent = new Intent(getActivity(), Reminders.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         User profile = db.getUserFromFacebookId(idFacebook);
-                        intent.putExtra("idUser",profile.getId());
+                        SharedPreferences.Editor setPrefs = prefs.edit();
+                        setPrefs.putString("name",profile.getName());
+                        setPrefs.putString("email",profile.getEmail());
+                        setPrefs.putString("idFacebook",profile.getIdFacebook());
+                        setPrefs.putString("password",profile.getPassword());
+                        setPrefs.putString("bio",profile.getBio());
+                        setPrefs.putInt("id",profile.getId());
+                        setPrefs.commit();
+                        getActivity().finish();
                         startActivity(intent);
                     }else{
                         Intent intent = new Intent(getActivity(), Registration.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        getActivity().finish();
                         startActivity(intent);
                     }
                 }
